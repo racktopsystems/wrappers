@@ -194,7 +194,9 @@ if ! mkdataset ; then
   return_err "${STATUS_BAD}" "${ERR_CREATE_DATASET}" ; exit "${rc}" ; fi
 
 if ! chmod_dataset ; then
-  return_err "${STATUS_BAD}" "${ERR_ALLOW_ACCESS}" "Unable to setup ACL. Check validity of groups and users being granted access."; exit "${rc}" ; fi
+  return_err "${STATUS_BAD}" "${ERR_ALLOW_ACCESS}" \
+  "Unable to setup ACL. Check validity of groups and users being granted access.";
+  exit "${rc}" ; fi
 
 if ! setup_afp_share ; then
   return_err "${STATUS_BAD}" "${ERR_ENABLE_SHARE}" ; exit "${rc}" ; fi
