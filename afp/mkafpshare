@@ -145,6 +145,22 @@ function chmod_dataset {
     done
   fi
 
+  # If the list of ACLs is shorter now than it was prior to this
+  # modification event, let's remove the remaining ACLs.
+  while true ; do
+    # We don't want to increment the index position because each time
+    # an entry is removed the entry that follows is moved one down.
+    # For example, if you have these four entrees:
+    # acl[1] usera
+    # acl[2] userb
+    # acl[3] userc
+    # acl[4] userd
+    # ... and we want to remove users userc and userd, as soon as we
+    # remove acl[3] userc, following ACL becomes acl[3] userd.
+    # Thus, index value remains fixed, and we remove until
+    # we no longer have anything to remove, at which point we break out.
+    chmod A${idx}- /storage/${ROOTDS}/${share[name]} 2>/dev/null || break
+  done
   return "${rc}"
 }
 
