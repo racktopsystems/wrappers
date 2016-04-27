@@ -8,9 +8,9 @@
 # of RackTop Systems.
 #
 # @@DESCRIPTION@@  A minimal wrapper encapsulating steps to create AFP share
-# @@NAME@@         hac-create
+# @@NAME@@         mkafpshare
 # @@STABILITY@@    unstable
-# @@VERSION@@      1.0.0
+# @@VERSION@@      1.0.1
 
 # If this was enabled via envvar. enable tracing globally and in functions.
 DEBUG="${DEBUG:-0}"
